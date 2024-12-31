@@ -1,0 +1,299 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f0f2f5;
+}
+
+.container {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Form Styles */
+.form-container {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  padding: 50px;
+  transition: all 0.8s ease-in-out;
+}
+
+/* Initial position for signup form */
+.signup-form {
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Initial position for signin form (off-screen) */
+.signin-form {
+  left: -50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* When active class is added */
+.container.active .signup-form {
+  left: 100%;
+}
+
+.container.active .signin-form {
+  left: 50%;
+}
+
+/* Image Styles */
+.image-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  transition: all 0.8s ease-in-out;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.8s ease-in-out;
+}
+.signup-image {
+  width: 30rem;
+  height: 30rem;
+  margin-top: 4rem;
+}
+.signin-image {
+  width: 30rem;
+  height: 30rem;
+  margin-top: 4rem;
+}
+.signup-image {
+  opacity: 1;
+}
+
+.signin-image {
+  opacity: 0;
+}
+
+/* When active class is added */
+.container.active .image-container {
+  right: 50%;
+}
+
+.container.active .signup-image {
+  opacity: 0;
+}
+
+.container.active .signin-image {
+  opacity: 1;
+}
+
+/* Form Elements Styling */
+h2 {
+  font-size: 2.2rem;
+  color: #ff715e;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.signin-form h2 {
+  color: #28dec0;
+}
+
+.signup-form p a {
+  color: #ff715e;
+}
+.signin-form p a {
+  color: #28dec0;
+}
+.input-field {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.T {
+  display: flex;
+  gap: 2rem;
+}
+/* Password */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input[type="password"] {
+  width: 100%;
+  padding-right: 40px; /* Space for the eye icon */
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px; /* Position the eye icon inside the container */
+  cursor: pointer;
+  transition: transform 0.2s ease; /* Smooth transformation */
+}
+.eye-img {
+  min-width: 35px; /* Adjust size of the custom images */
+  max-width: 35px; /* Adjust size of the custom images */
+  min-height: 33px;
+  max-height: 33px;
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.3s ease; /* Smooth transitions */
+}
+.eye-img.hidden {
+  opacity: 0;
+  pointer-events: none; /* Prevent interactions when hidden */
+  transform: scale(0.8); /* Slightly shrink the hidden image */
+}
+
+/* Password */
+input:focus {
+  border-color: #ff715e;
+}
+.signin-form input:focus {
+  border-color: #28dec0;
+}
+
+.btn {
+  width: 100%;
+  padding: 15px;
+  background: #ff715e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.bng {
+  width: 100%;
+  padding: 15px;
+  background: #ebebeb;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s;
+  margin-bottom: 1rem;
+}
+.bng img {
+  margin-bottom: -6px;
+  width: 1.5rem;
+}
+.btn:hover {
+  background-color: #ebebeb;
+  color: #ff715e;
+  border: 2px solid #ffafa3;
+  padding: 13px;
+}
+.signin-form .btn {
+  background: #28dec0;
+}
+.signin-form .btn:hover {
+  color: white;
+  background: #e0e0e0;
+  border: 2px solid #28b99d;
+  padding: 13px;
+}
+.toggle-form {
+  margin-top: 20px;
+  text-align: center;
+  color: #28b99d;
+}
+.signin-form .toggle-form {
+  color: #ffafa3;
+}
+.toggle-form a {
+  color: #4481eb;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 5px;
+}
+@media screen and (max-width: 767px) {
+  .image-container {
+    display: none;
+  }
+  .container {
+    padding: 0;
+  }
+  .form-container {
+    padding: 30px;
+  }
+  .signup-form {
+    background-image: url(20602852_6333048.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+    background-color: #ff715e1f;
+    height: 120vh;
+    color: #28b99d;
+  }
+  .signin-form {
+    background-image: url(6184159_3094350.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200% 110%;
+    background-blend-mode: multiply;
+    background-color: #28dec046;
+    border-radius: 5px;
+  }
+
+  .signup-form {
+    left: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90vw;
+    height: 45vh;
+    margin-top: 8rem;
+  }
+  /* Initial position for signin form (off-screen) */
+  .signin-form {
+    left: 100%;
+    display: flex;
+    width: 90vw;
+    height: 45vh;
+    margin-top: 8rem;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* When active class is added */
+  .container.active .signup-form {
+    left: 100%;
+  }
+
+  .container.active .signin-form {
+    left: 5%;
+  }
+}

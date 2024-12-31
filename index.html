@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up / Sign In</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sign Up Form -->
+      <div class="form-container signup-form">
+        <h2>Sign Up</h2>
+        <button class="bng">
+          <img src="icons8-google-94.png" alt="" />
+          Sign Up with Google
+        </button>
+        <div class="T">
+          <div class="input-field">
+            <input type="text" placeholder="Full Name" required />
+          </div>
+          <div class="input-field">
+            <input type="text" placeholder="Username" required />
+          </div>
+        </div>
+        <div class="input-field">
+          <input type="email" placeholder="Email Address " required />
+        </div>
+        <div class="input-field password-container">
+          <input
+            type="password"
+            id="signup-password"
+            placeholder="Create your password"
+          />
+          <span id="signup-toggle" class="eye-icon">
+            <img src="mmmm.png" alt="Show Password" class="eye-img" />
+          </span>
+        </div>
+        <div class="input-field">
+          <input type="tel" placeholder="Phone Number" required />
+        </div>
+        <button class="btn">Create Account</button>
+        <p class="toggle-form">
+          Already have an account?<a onclick="toggleForm()">Login</a>
+        </p>
+      </div>
+
+      <!-- Sign In Form -->
+      <div class="form-container signin-form">
+        <h2>User Login</h2>
+        <button class="bng">
+          <img src="icons8-google-94.png" alt="" />
+          Login with Google
+        </button>
+        <div class="input-field">
+          <input type="email" placeholder="Email" required />
+        </div>
+        <div class="input-field password-container">
+          <input
+            type="password"
+            id="login-password"
+            placeholder="Enter your password"
+          />
+          <span id="login-toggle" class="eye-icon">
+            <img src="mmmm.png" alt="Show Password" class="eye-img" />
+          </span>
+        </div>
+        <button class="btn">Login</button>
+        <p class="toggle-form">
+          Don't have an account?<a onclick="toggleForm()">Sign up</a>
+        </p>
+      </div>
+
+      <!-- Images Container -->
+      <div class="image-container">
+        <img
+          src="20602852_6333048.svg"
+          class="image signup-image"
+          alt="sign up"
+        />
+        <img
+          src="6184159_3094350.svg"
+          class="image signin-image"
+          alt="sign in"
+        />
+      </div>
+    </div>
+
+    <script>
+      function toggleForm() {
+        document.querySelector(".container").classList.toggle("active");
+      }
+      // Function to toggle password visibility
+      function setupPasswordToggle(inputId, toggleId) {
+        const passwordInput = document.getElementById(inputId);
+        const toggleIcon = document.getElementById(toggleId);
+        const eyeImg = toggleIcon.querySelector(".eye-img");
+
+        toggleIcon.addEventListener("click", () => {
+          // Toggle input type
+          const isPassword = passwordInput.type === "password";
+          passwordInput.type = isPassword ? "text" : "password";
+          // Add a smooth transition between images
+          eyeImg.classList.add("hidden"); // Start fade out
+          setTimeout(() => {
+            // Change the image source
+            eyeImg.src = isPassword ? "mmm.png" : "mmmm.png";
+            eyeImg.alt = isPassword ? "Hide Password" : "Show Password";
+            eyeImg.classList.remove("hidden"); // Fade back in
+          }, 300); // Match the duration of the CSS transition
+        });
+      }
+
+      // Initialize toggles for Login and Sign-Up forms
+      setupPasswordToggle("login-password", "login-toggle");
+      setupPasswordToggle("signup-password", "signup-toggle");
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
